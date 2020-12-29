@@ -17,8 +17,13 @@ get_header();
           <div class="row">
             <div class="col-lg-12">
               <div class="text-content">
-                <h4>Post Details</h4>
-                <h2>Single blog post</h2>
+                <h4><?php the_category(', '); ?></h4>
+               <?php	if ( is_singular() ) :
+			the_title( '<h2 class="entry-title">', '</h2>' );
+		else :
+			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+    endif;
+    ?>
               </div>
             </div>
           </div>
@@ -52,7 +57,7 @@ get_header();
 
 
     
-
+    
 		<?php
 		while ( have_posts() ) :
 			the_post();
@@ -67,9 +72,6 @@ get_header();
 			);
 
 			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
 
 		endwhile; // End of the loop.
 		?>
@@ -83,8 +85,8 @@ get_header();
            
         
     
-
+    
 <?php
 
-get_sidebar();
+
 get_footer();

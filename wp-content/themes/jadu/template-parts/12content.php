@@ -29,9 +29,7 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-
-
-<section class="blog-posts grid-system">
+	<section class="blog-posts grid-system">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
@@ -40,7 +38,7 @@
                 <div class="col-lg-12">
                   <div class="blog-post">
                     <div class="blog-thumb">
-                    <?php jadu_post_thumbnail(); ?>
+					<?php jadu_post_thumbnail(); ?>
                     </div>
                     <div class="down-content">
                       <span><?php the_category(', '); ?></span>
@@ -50,33 +48,33 @@
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif; ?></h4></a>
                       <ul class="post-info">
-                        <li><a href="#"><?php the_author();?></a></li>
-                        <li><a href="#"><?php the_date();?></a></li>
-                        <li><a href="#"><?php comments_number(); ?></a></li>
+					  <li><a href="#"><?php the_author();?></a></li>
+<li><a href="#"><?php the_date();?></a></li>
+<li><a href="#"><?php comments_number(); ?></a></li>
                       </ul>
-                      <?php
-                        the_content(
-                            sprintf(
-                                wp_kses(
-                                    /* translators: %s: Name of current post. Only visible to screen readers */
-                                    __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'jadu' ),
-                                    array(
-                                        'span' => array(
-                                            'class' => array(),
-                                        ),
-                                    )
-                                ),
-                                wp_kses_post( get_the_title() )
-                            )
-                        );
+					  <?php
+		the_content(
+			sprintf(
+				wp_kses(
+					/* translators: %s: Name of current post. Only visible to screen readers */
+					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'jadu' ),
+					array(
+						'span' => array(
+							'class' => array(),
+						),
+					)
+				),
+				wp_kses_post( get_the_title() )
+			)
+		);
 
-                        wp_link_pages(
-                            array(
-                                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'jadu' ),
-                                'after'  => '</div>',
-                            )
-                        );
-                        ?>
+		wp_link_pages(
+			array(
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'jadu' ),
+				'after'  => '</div>',
+			)
+		);
+		?>
                       <div class="post-options">
                         <div class="row">
                           <div class="col-6">
@@ -104,26 +102,14 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-12">
-                  <div class="sidebar-item comments">
-                    <?php
-                    	if ( comments_open() || get_comments_number() ) :
-                            comments_template();
-                        endif;
-                    ?>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
+           
+				<div class="col-lg-4">
             <div class="sidebar">
               <div class="row">
                 <div class="col-lg-12">
-                  <div class="sidebar-item tags">
-                    <div class="sidebar-heading">
-                    <?php get_sidebar(); ?>
-                    </div>
+                  <div class="sidebar-item recent-posts">
+                    
+                <?php get_sidebar(); ?>
                   </div>
                 </div>
               </div>
@@ -133,7 +119,9 @@
       </div>
     </section>
 
-    <footer class="entry-footer">
-		<?php jadu_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+	<div class="entry-content">
+		
+	</div><!-- .entry-content -->
+
+
 </article><!-- #post-<?php the_ID(); ?> -->

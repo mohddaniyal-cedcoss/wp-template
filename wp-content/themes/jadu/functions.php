@@ -144,7 +144,7 @@ function jadu_scripts() {
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri(). '/vendor/bootstrap/css/bootstrap.min.css', array(), _S_VERSION );
 	wp_enqueue_style( 'flex-slider', get_template_directory_uri(). '/css/flex-slider.css', array(), _S_VERSION );
 	wp_enqueue_style( 'fontawesome', get_template_directory_uri(). '/css/fontawesome.css', array(), _S_VERSION );
-	wp_enqueue_style( 'templatemo-stand-blog', get_template_directory_uri(). '/css/templatemo-stand-blog.css', array(), _S_VERSION );
+	wp_enqueue_style( 'templatemo-stand-blog', get_template_directory_uri(). '/css/templatemo-stand-blog.css', array(), _S_VERSION ,'all',1.1,false);
 		wp_enqueue_style( 'owl', get_template_directory_uri(). '/css/owl.css', array(), _S_VERSION );
 
 	wp_style_add_data( 'jadu-style', 'rtl', 'replace' );
