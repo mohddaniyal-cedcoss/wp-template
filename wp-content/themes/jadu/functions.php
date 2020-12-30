@@ -1,6 +1,6 @@
 <?php
 /**
- * jadu functions and definitions
+ * Jadu functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
@@ -141,15 +141,15 @@ add_action( 'widgets_init', 'jadu_widgets_init' );
  */
 function jadu_scripts() {
 	wp_enqueue_style( 'jadu-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_enqueue_style( 'bootstrap', get_template_directory_uri(). '/vendor/bootstrap/css/bootstrap.min.css', array(), _S_VERSION );
-	wp_enqueue_style( 'flex-slider', get_template_directory_uri(). '/css/flex-slider.css', array(), _S_VERSION );
-	wp_enqueue_style( 'fontawesome', get_template_directory_uri(). '/css/fontawesome.css', array(), _S_VERSION );
-	wp_enqueue_style( 'templatemo-stand-blog', get_template_directory_uri(). '/css/templatemo-stand-blog.css', array(), _S_VERSION ,'all',1.1,false);
-		wp_enqueue_style( 'owl', get_template_directory_uri(). '/css/owl.css', array(), _S_VERSION );
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/vendor/bootstrap/css/bootstrap.min.css', array(), _S_VERSION );
+	wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/css/fontawesome.css', array(), _S_VERSION );
+	wp_enqueue_style( 'flex-slider', get_template_directory_uri() . '/css/flex-slider.css', array(), _S_VERSION );
+	wp_enqueue_style( 'templatemo-stand-blog', get_template_directory_uri() . '/css/templatemo-stand-blog.css', array(), _S_VERSION, 'all', 1.1, false );
+	wp_enqueue_style( 'owl', get_template_directory_uri() . '/css/owl.css', array(), _S_VERSION );
 
 	wp_style_add_data( 'jadu-style', 'rtl', 'replace' );
-wp_enqueue_script( 'jquery', get_template_directory_uri() . '/vendor/jquery/jquery.min.js', array(), _S_VERSION, true );
-		wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/vendor/bootstrap/js/bootstrap.bundle.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/vendor/jquery/jquery.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/vendor/bootstrap/js/bootstrap.bundle.min.js', array(), _S_VERSION, true );
 
 	wp_enqueue_script( 'jadu-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'accordians', get_template_directory_uri() . '/js/accordians.js', array(), _S_VERSION, true );
@@ -191,16 +191,33 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-function add_link_atts($atts) {
-	$atts['class'] = "nav-link";
+function add_link_atts( $atts ) {
+	$atts['class'] = 'nav-link';
 	return $atts;
-  }
-  add_filter( 'nav_menu_link_attributes', 'add_link_atts');
-// This theme uses wp_nav_menu() in two locations.  
-register_nav_menus( array(  
-	'primary' => __( 'Primary Navigation', 'jadu' ),  
-	'secondary' => __('Secondary Navigation', 'jadu')  
-  ) );
+}
+add_filter( 'nav_menu_link_attributes', 'add_link_atts' );
+// This theme uses wp_nav_menu() in two locations.
+register_nav_menus(
+	array(
+		'primary'   => __( 'Primary Navigation', 'jadu' ),
+		'secondary' => __( 'Secondary Navigation', 'jadu' )
+	)
+);
+
+function njengah_number_pagination() {
+		/*
+		 * for pagination
+		 */
+	global $wp_query;
+	$big = 9999999; // need an unlikely integer.
+		echo paginate_links( array(
+			'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+			'format'  => '?paged=%#%',
+			'current' => max( 1, get_query_var( 'paged' ), ),
+			'total'   => $wp_query->max_num_pages, 
+		) 
+	);
+	}
 
 
 

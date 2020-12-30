@@ -40,11 +40,16 @@ get_header();
 				 */
 				get_template_part( 'template-parts/content', get_post_type() );
 
-			endwhile;
+			endwhile; 
 
-			the_posts_navigation();
-
-		else :
+			//the_posts_navigation();
+			?>
+<div class="col-lg-12">
+                  <ul class="page-numbers">
+                  <?php njengah_number_pagination(); ?>
+                  </ul>
+                </div>
+		<?php else :
 
 			get_template_part( 'template-parts/content', 'none' );
 
